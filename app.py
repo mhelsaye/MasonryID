@@ -16,6 +16,7 @@ from MasonryWalls_ID import draw_blocks, cross_section, solve_betaC,  calculate_
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
+
 # units 
 mm = 0.001
 m = 1
@@ -281,7 +282,7 @@ def update_interaction_diagram(n_clicks, H, t, fblock, S, bar, P_DL, P_LL, e, W)
         return ""
         
     # Get cross section properties
-    beff_m_1, beff_m_2, Aseff_m, bg_m, bug_m_1, bug_m_2, Ae_1, Ae_2, fm_e_1, fm_e_2, I_gross_gr, I_gross_ug_1, I_gross_eff, I_cr_eff, kd, n ,E_m , ek, rho_SW, rho_g, rho_ug, fm_g, fm_ug, tf =cross_section(t, s,db)
+    beff_m_1, beff_m_2, Aseff_m, bg_m, bug_m_1, bug_m_2, Ae_1, Ae_2, fm_e_1, fm_e_2, I_gross_gr, I_gross_ug_1, I_gross_eff, I_cr_eff, kd, n ,E_m , ek, rho_SW, rho_g, rho_ug, fm_g, fm_ug, tf =cross_section(t, S,bar,fblock)
     
     # Calculate maximum point
     PMax = solve_betaC(0.6,   fm_e_1, Ae_1, fm_g, bg_m, fm_ug, tf, bug_m_1, t)
@@ -403,8 +404,7 @@ def update_interaction_diagram(n_clicks, H, t, fblock, S, bar, P_DL, P_LL, e, W)
     
     return dcc.Graph(figure=fig)
 
-app.layout = generate_layout()
-
+app.layout = generate_layout
 
 if __name__ == "__main__":
     app.run_server(debug=True)
