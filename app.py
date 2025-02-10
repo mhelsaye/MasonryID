@@ -16,8 +16,6 @@ from MasonryWalls_ID import draw_blocks, cross_section, solve_betaC,  calculate_
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
-
-
 # units 
 mm = 0.001
 m = 1
@@ -37,6 +35,8 @@ fais = 0.85
 emu = 0.003
 k= 1
 
+
+
 # Default values
 H_default = 8000 *mm   # mm
 t_options = np.array([140, 190, 240, 290]) *mm  # mm
@@ -54,11 +54,13 @@ W_default = 1 *kPa # kPa
 
 
 # Layout
+
 def generate_layout():
 
     return dbc.Container([
 
-        html.H1("Masonry Wall Design Tool", className="text-center my-4", style={"font-size": "32px"}),
+        html.H1("Masonry Walls Design Tool", className="text-center my-4", style={"font-size": "32px"}),
+        html.H1("(Out-of-Plane)", className="text-center my-4", style={"font-size": "28px"}),
 
         dbc.Row([
 
@@ -298,7 +300,7 @@ def update_interaction_diagram(n_clicks, H, t, fblock, S, bar, P_DL, P_LL, e, W)
     lambda_h = k *H/t 
     # Loads Calculation 
     # Loads Calculation 
-    e_P = np.maximum(0.1 * t, e)
+    e_P = np.maximum(0.1 * t, e*mm)
     # Self Weight
     P_SW_mid = rho_SW  * H/2  # at mid span 
     P_SW_base = rho_SW  * H # at base
@@ -403,5 +405,6 @@ def update_interaction_diagram(n_clicks, H, t, fblock, S, bar, P_DL, P_LL, e, W)
 
 app.layout = generate_layout()
 
+
 if __name__ == "__main__":
-    app.run_server(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
+    app.run_server(debug=True)
