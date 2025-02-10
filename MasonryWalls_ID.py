@@ -36,7 +36,7 @@ lambda_h = k * H /t
 
 
 
-def cross_section(t, s, db):
+def cross_section(t, s, db,fblock):
     
     if db == 10 * mm:
         As = 100 * mm**2
@@ -124,7 +124,7 @@ def cross_section(t, s, db):
 
     return beff_m_1, beff_m_2, Aseff_m, bg_m, bug_m_1, bug_m_2, Ae_1, Ae_2, fm_e_1, fm_e_2, I_gross_gr, I_gross_ug_1, I_gross_eff, I_cr_eff, kd, n , E_m, ek, rho_SW, rho_g, rho_ug, fm_g, fm_ug, tf 
 
-beff_m_1, beff_m_2, Aseff_m, bg_m, bug_m_1, bug_m_2, Ae_1, Ae_2, fm_e_1, fm_e_2, I_gross_gr, I_gross_ug_1, I_gross_eff, I_cr_eff, kd, n ,E_m , ek, rho_SW, rho_g, rho_ug, fm_g, fm_ug, tf =cross_section(t, s,db)
+beff_m_1, beff_m_2, Aseff_m, bg_m, bug_m_1, bug_m_2, Ae_1, Ae_2, fm_e_1, fm_e_2, I_gross_gr, I_gross_ug_1, I_gross_eff, I_cr_eff, kd, n ,E_m , ek, rho_SW, rho_g, rho_ug, fm_g, fm_ug, tf =cross_section(t, s,db,fblock)
     
 
 # Applied Loads 
