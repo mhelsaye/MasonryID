@@ -15,6 +15,8 @@ from MasonryWalls_ID import draw_blocks, cross_section, solve_betaC,  calculate_
 
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
+
 # units 
 mm = 0.001
 m = 1
