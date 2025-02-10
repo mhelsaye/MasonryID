@@ -406,4 +406,4 @@ def update_interaction_diagram(n_clicks, H, t, fblock, S, bar, P_DL, P_LL, e, W)
 app.layout = generate_layout
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
