@@ -17,6 +17,7 @@ from MasonryWalls_ID import draw_blocks, cross_section, solve_betaC,  calculate_
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
+
 # units 
 mm = 0.001
 m = 1
@@ -35,9 +36,6 @@ faim = 0.6
 fais = 0.85
 emu = 0.003
 k= 1
-
-# Initialize Dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Default values
 H_default = 8000 *mm   # mm
@@ -403,7 +401,7 @@ def update_interaction_diagram(n_clicks, H, t, fblock, S, bar, P_DL, P_LL, e, W)
     
     return dcc.Graph(figure=fig)
 
-app.layout = generate_layout
+app.layout = generate_layout()
 
 if __name__ == "__main__":
     app.run_server(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
